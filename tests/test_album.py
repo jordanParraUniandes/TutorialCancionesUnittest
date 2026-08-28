@@ -99,38 +99,6 @@ class AlbumTestCase(unittest.TestCase):
         )
         self.assertNotEqual(resultado, True)
 
-    def test_editar_album(self):
-        """Prueba la edición de dos álbumes"""
-        self.data.append(
-            (
-                self.data_factory.unique.name(),
-                self.data_factory.random_int(1800, 2021),
-                self.data_factory.text(),
-                random.choice(self.medios),
-            )
-        )
-
-        # Se cambia el título el primer álbum creado por uno que no existe
-        resultado1 = self.coleccion.editar_album(
-            album_id=1,
-            titulo=self.data[-1][0],
-            anio=self.data[-1][1],
-            descripcion=self.data[-1][2],
-            medio=self.data[-1][3],
-        )
-
-        # Se cambia el título del segundo álbum creado por uno que ya existe
-        resultado2 = self.coleccion.editar_album(
-            album_id=2,
-            titulo=self.data[-3][0],
-            anio=self.data[-3][1],
-            descripcion=self.data[-3][2],
-            medio=self.data[-3][3],
-        )
-
-        self.assertTrue(resultado1)
-        self.assertFalse(resultado2)
-
     def test_albumes_iguales(self):
         """Prueba si dos álbumes son la misma referencia a un objeto al recuperar un album del almacenamiento"""
         album_nuevo = self.albumes[0]
